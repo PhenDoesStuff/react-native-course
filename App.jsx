@@ -7,7 +7,16 @@ export default function App() {
 	const [goals, setGoals] = useState([]);
 
 	const addGoalHandler = newGoal => {
-		setGoals(currentGoals => [...currentGoals, newGoal]);
+		setGoals(currentGoals => [
+			...currentGoals,
+			{ text: newGoal, id: Math.random.toString },
+		]);
+	};
+
+	const deleteGoalHandler = id => {
+		setGoals(currentGoals => {
+			return currentGoals.filter(goal => goal.id !== id);
+		});
 	};
 
 	return (
@@ -17,7 +26,13 @@ export default function App() {
 				<FlatList
 					data={goals}
 					renderItem={itemData => {
-						return <GoalItem itemData={itemData} />;
+						return (
+							<GoalItem
+								itemData={itemData}
+								id={itemData.item.id}
+								onDeleteItem={deleteGoalHandler}
+							/>
+						);
 					}}
 					alwaysBounceVertical={false}
 				/>
