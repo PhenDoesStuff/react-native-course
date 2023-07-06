@@ -15,7 +15,7 @@ const GoalInput = props => {
 	}
 
 	return (
-		<Modal visible={props.visibile} animationType='slide'>
+		<Modal visible={props.visible} animationType='slide'>
 			<View style={styles.inputContainer}>
 				<TextInput
 					style={styles.textInput}
@@ -28,7 +28,7 @@ const GoalInput = props => {
 						<Button title='Add Goal' onPress={addGoalHandler} />
 					</View>
 					<View style={styles.button}>
-						<Button title='Cancel' />
+						<Button title='Cancel' onPress={props.onCloseModal} />
 					</View>
 				</View>
 			</View>

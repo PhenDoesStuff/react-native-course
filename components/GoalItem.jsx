@@ -8,7 +8,7 @@ const GoalItem = props => {
 				android_ripple={{ color: '#dddddd' }}
 				onPress={props.onDeleteItem.bind(this, props.id)}
 				style={({ pressed }) => pressed && styles.pressedItem}>
-				<Text style={styles.goalText}>{props.itemData.item}</Text>
+				<Text style={styles.goalText}>{props.itemData.item.text}</Text>
 			</Pressable>
 		</View>
 	);

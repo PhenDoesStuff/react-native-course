@@ -7,8 +7,8 @@ export default function App() {
 	const [isModalVisibile, setIsModalVisibile] = useState(false);
 	const [goals, setGoals] = useState([]);
 
-	const showAddGoalHandler = () => {
-		setIsModalVisibile(true);
+	const toggleGoalModalHandler = () => {
+		setIsModalVisibile(!isModalVisibile);
 	};
 
 	const addGoalHandler = newGoal => {
@@ -16,6 +16,7 @@ export default function App() {
 			...currentGoals,
 			{ text: newGoal, id: Math.random.toString },
 		]);
+		toggleGoalModalHandler();
 	};
 
 	const deleteGoalHandler = id => {
@@ -29,9 +30,13 @@ export default function App() {
 			<Button
 				title='Add New Goal'
 				color='#5e0acc'
-				onPress={showAddGoalHandler}
+				onPress={toggleGoalModalHandler}
 			/>
-			<GoalInput visible={isModalVisibile} onAddGoal={addGoalHandler} />
+			<GoalInput
+				visible={isModalVisibile}
+				onAddGoal={addGoalHandler}
+				onCloseModal={toggleGoalModalHandler}
+			/>
 			<View style={styles.goalsContainer}>
 				<FlatList
 					data={goals}
