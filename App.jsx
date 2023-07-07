@@ -15,7 +15,7 @@ export default function App() {
 	const addGoalHandler = newGoal => {
 		setGoals(currentGoals => [
 			...currentGoals,
-			{ text: newGoal, id: Math.random.toString },
+			{ text: newGoal, id: Math.random().toString() },
 		]);
 		toggleGoalModalHandler();
 	};
@@ -32,7 +32,7 @@ export default function App() {
 			<View style={styles.appContainer}>
 				<Button
 					title='Add New Goal'
-					color='#5e0acc'
+					color='#a065ec'
 					onPress={toggleGoalModalHandler}
 				/>
 				<GoalInput
